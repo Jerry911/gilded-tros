@@ -1,6 +1,7 @@
 package com.gildedtros;
 
 import com.gildedtros.interfaces.ItemUpdater;
+import com.gildedtros.updater.BackstagePassUpdater;
 import com.gildedtros.updater.GoodWineUpdater;
 import com.gildedtros.updater.LegendaryItemUpdater;
 import com.gildedtros.updater.SmellyItemUpdater;
@@ -18,6 +19,8 @@ class GildedTros {
         ITEM_UPDATERS.put("Duplicate Code", new SmellyItemUpdater());
         ITEM_UPDATERS.put("Legendary Item", new LegendaryItemUpdater());
         ITEM_UPDATERS.put("Good Wine", new GoodWineUpdater());
+        ITEM_UPDATERS.put("Backstage passes for Re:Factor", new BackstagePassUpdater());
+        ITEM_UPDATERS.put("Backstage passes for HAXX", new BackstagePassUpdater());
     }
 
     public GildedTros(Item[] items) {
