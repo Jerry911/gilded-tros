@@ -4,6 +4,7 @@ import com.gildedtros.interfaces.ItemUpdater;
 import com.gildedtros.updater.BackstagePassUpdater;
 import com.gildedtros.updater.GoodWineUpdater;
 import com.gildedtros.updater.LegendaryItemUpdater;
+import com.gildedtros.updater.NormalItemUpdater;
 import com.gildedtros.updater.SmellyItemUpdater;
 
 import java.util.HashMap;
@@ -21,6 +22,7 @@ class GildedTros {
         ITEM_UPDATERS.put("Good Wine", new GoodWineUpdater());
         ITEM_UPDATERS.put("Backstage passes for Re:Factor", new BackstagePassUpdater());
         ITEM_UPDATERS.put("Backstage passes for HAXX", new BackstagePassUpdater());
+        ITEM_UPDATERS.put("Normal Item", new NormalItemUpdater());
     }
 
     public GildedTros(Item[] items) {
@@ -34,56 +36,6 @@ class GildedTros {
 
             if (updater != null) {
                 updater.update(item);
-            } else {
-                if (!item.name.equals("Good Wine")
-                        && !item.name.equals("Backstage passes for Re:Factor")
-                        && !item.name.equals("Backstage passes for HAXX")) {
-                    if (item.quality > 0) {
-                        if (!item.name.equals("B-DAWG Keychain")) {
-                            item.quality = item.quality - 1;
-                        }
-                    }
-                } else {
-                    if (item.quality < 50) {
-                        item.quality = item.quality + 1;
-
-                        if (item.name.equals("Backstage passes for Re:Factor") || item.name.equals("Backstage passes for HAXX")) {
-                            if (item.sellIn < 11) {
-                                if (item.quality < 50) {
-                                    item.quality = item.quality + 1;
-                                }
-                            }
-
-                            if (item.sellIn < 6) {
-                                if (item.quality < 50) {
-                                    item.quality = item.quality + 1;
-                                }
-                            }
-                        }
-                    }
-                }
-
-                if (!item.name.equals("B-DAWG Keychain")) {
-                    item.sellIn = item.sellIn - 1;
-                }
-
-                if (item.sellIn < 0) {
-                    if (!item.name.equals("Good Wine")) {
-                        if (!item.name.equals("Backstage passes for Re:Factor") && !item.name.equals("Backstage passes for HAXX")) {
-                            if (item.quality > 0) {
-                                if (!item.name.equals("B-DAWG Keychain")) {
-                                    item.quality = item.quality - 1;
-                                }
-                            }
-                        } else {
-                            item.quality = item.quality - item.quality;
-                        }
-                    } else {
-                        if (item.quality < 50) {
-                            item.quality = item.quality + 1;
-                        }
-                    }
-                }
             }
         }
     }
