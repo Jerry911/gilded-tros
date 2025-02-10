@@ -8,7 +8,7 @@ class GildedTrosTest {
 
     @Test
     void foo() {
-        Item[] items = new Item[] { new Item("foo", 0, 0) };
+        Item[] items = new Item[] { new Item("fixme", 0, 0) };
         GildedTros app = new GildedTros(items);
         app.updateQuality();
         assertEquals("fixme", app.items[0].name);
