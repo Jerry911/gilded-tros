@@ -18,11 +18,10 @@ class GildedTros {
         ITEM_UPDATERS.put("Ugly Variable Names", new SmellyItemUpdater());
         ITEM_UPDATERS.put("Long Methods", new SmellyItemUpdater());
         ITEM_UPDATERS.put("Duplicate Code", new SmellyItemUpdater());
-        ITEM_UPDATERS.put("Legendary Item", new LegendaryItemUpdater());
+        ITEM_UPDATERS.put("B-DAWG Keychain", new LegendaryItemUpdater());
         ITEM_UPDATERS.put("Good Wine", new GoodWineUpdater());
         ITEM_UPDATERS.put("Backstage passes for Re:Factor", new BackstagePassUpdater());
         ITEM_UPDATERS.put("Backstage passes for HAXX", new BackstagePassUpdater());
-        ITEM_UPDATERS.put("Normal Item", new NormalItemUpdater());
     }
 
     public GildedTros(Item[] items) {
@@ -32,11 +31,8 @@ class GildedTros {
     public void updateQuality() {
         for (int i = 0; i < items.length; i++) {
             Item item = items[i];
-            ItemUpdater updater = ITEM_UPDATERS.get(item.name);
-
-            if (updater != null) {
-                updater.update(item);
-            }
+            ItemUpdater updater = ITEM_UPDATERS.getOrDefault(item.name, new NormalItemUpdater());
+            updater.update(item);
         }
     }
 }
