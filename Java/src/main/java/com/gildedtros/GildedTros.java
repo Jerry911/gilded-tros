@@ -1,6 +1,7 @@
 package com.gildedtros;
 
 import com.gildedtros.interfaces.ItemUpdater;
+import com.gildedtros.updater.GoodWineUpdater;
 import com.gildedtros.updater.LegendaryItemUpdater;
 import com.gildedtros.updater.SmellyItemUpdater;
 
@@ -16,6 +17,7 @@ class GildedTros {
         ITEM_UPDATERS.put("Long Methods", new SmellyItemUpdater());
         ITEM_UPDATERS.put("Duplicate Code", new SmellyItemUpdater());
         ITEM_UPDATERS.put("Legendary Item", new LegendaryItemUpdater());
+        ITEM_UPDATERS.put("Good Wine", new GoodWineUpdater());
     }
 
     public GildedTros(Item[] items) {
